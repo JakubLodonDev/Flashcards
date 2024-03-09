@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long cardId;
 
     private String front;
     private String back;
@@ -18,12 +18,12 @@ public class Card {
     public Card() {
     }
 
-    public Long getId() {
-        return id;
+    public Long getCardId() {
+        return cardId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCardId(Long cardId) {
+        this.cardId = cardId;
     }
 
     public String getFront() {

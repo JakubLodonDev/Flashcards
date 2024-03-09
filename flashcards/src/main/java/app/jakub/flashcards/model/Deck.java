@@ -9,7 +9,7 @@ import java.util.Set;
 public class Deck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long deckId;
 
     private String name;
 
@@ -19,12 +19,12 @@ public class Deck {
     public Deck() {
     }
 
-    public Long getId() {
-        return id;
+    public Long getDeckId() {
+        return deckId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setDeckId(Long deckId) {
+        this.deckId = deckId;
     }
 
     public String getName() {
