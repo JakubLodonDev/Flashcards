@@ -1,4 +1,4 @@
-package java.jakub.flashcards;
+package app.jakub.flashcards;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

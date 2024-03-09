@@ -1,4 +1,4 @@
-package java.jakub.flashcards;
+package app.jakub.flashcards;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
