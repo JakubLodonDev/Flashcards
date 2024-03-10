@@ -1,5 +1,6 @@
 package app.jakub.flashcards.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -14,6 +15,7 @@ public class Deck {
     private String name;
 
     @OneToMany(mappedBy = "deck", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private Set<Card> cards = new HashSet<>();
 
     public Deck() {

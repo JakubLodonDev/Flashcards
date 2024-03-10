@@ -23,6 +23,6 @@ public class CardService {
     }
 
     public List<Card> findAllCardsByDeckId(Long deckId) {
-        return cardRepository.findAllByDeck(deckId);
+        return cardRepository.findCardsByDeck_DeckId(deckId);
     }
 }

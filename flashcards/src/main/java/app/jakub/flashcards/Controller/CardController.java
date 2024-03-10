@@ -22,16 +22,6 @@ public class CardController {
         this.deckService = deckService;
     }
 
-    @PostMapping
-    public ResponseEntity<Card> addCardToDeck(@PathVariable Long deckId, @RequestBody Card card) {
-        return deckService.findDeckById(deckId)
-                .map(deck -> {
-                    card.setDeck(deck);
-                    Card newCard = cardService.saveCard(card);
-                    return ResponseEntity.ok().body(newCard);
-                }).orElse(ResponseEntity.notFound().build());
-    }
-
     @GetMapping
     public ResponseEntity<List<Card>> getAllCardsByDeckId(@PathVariable Long deckId) {
         return deckService.findDeckById(deckId)
@@ -41,5 +31,12 @@ public class CardController {
                 }).orElse(ResponseEntity.notFound().build());
     }
 
-
+    @PostMapping
+    public ResponseEntity<Card> addCardToDeck(@PathVariable Long deckId, @RequestBody Card card) {
+        return deckService.findDeckById(deckId)
+                .map(deck -> {
+                    card.setDeck(deck);
+                    return ResponseEntity.ok().body(cardService.saveCard(card));
+                }).orElse(ResponseEntity.notFound().build());
+    }
 }

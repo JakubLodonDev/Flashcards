@@ -1,5 +1,6 @@
 package app.jakub.flashcards.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,6 +14,7 @@ public class Card {
 
     @ManyToOne
     @JoinColumn(name = "deck_id")
+    @JsonBackReference
     private Deck deck;
 
     public Card() {
