@@ -20,6 +20,11 @@ public class Card {
     public Card() {
     }
 
+    public void updateData(String front, String back){
+        this.front = front;
+        this.back = back;
+    }
+
     public Long getCardId() {
         return cardId;
     }

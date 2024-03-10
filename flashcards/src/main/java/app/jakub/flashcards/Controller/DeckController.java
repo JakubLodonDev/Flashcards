@@ -24,9 +24,9 @@ public class DeckController {
         return deckService.findAllDecks();
     }
 
-    @GetMapping("/{id}")
-    private ResponseEntity<Deck> getDeckById(@PathVariable Long id){
-        return deckService.findDeckById(id)
+    @GetMapping("/{deckId}")
+    public ResponseEntity<Deck> getDeckById(@PathVariable Long deckId){
+        return deckService.findDeckById(deckId)
                 .map(deck -> ResponseEntity.ok().body(deck))
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -36,9 +36,18 @@ public class DeckController {
         return deckService.saveNewDeck(deck);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteDeck(@PathVariable Long id) {
-        return deckService.findDeckById(id)
+    @PutMapping("/{deckId}")
+    public ResponseEntity<Deck> updateDeck(@PathVariable Long deckId,
+                                           @RequestBody Deck deckDetails){
+        return deckService.findDeckById(deckId)
+                .map(deck ->
+                        ResponseEntity.ok().body(deckService.updateDeckData(deck, deckDetails))
+                ).orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{deckId}")
+    public ResponseEntity<?> deleteDeck(@PathVariable Long deckId) {
+        return deckService.findDeckById(deckId)
                 .map(deck -> {
                     deckService.deleteDeck(deck.getDeckId());
                     return ResponseEntity.ok().build();

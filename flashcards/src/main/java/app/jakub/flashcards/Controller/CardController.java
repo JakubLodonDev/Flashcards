@@ -31,6 +31,19 @@ public class CardController {
                 }).orElse(ResponseEntity.notFound().build());
     }
 
+    @PutMapping("/{cardId}")
+    public ResponseEntity<Card> updateCard(@PathVariable Long deckId,
+                                           @PathVariable Long cardId,
+                                           @RequestBody Card cardDetails){
+        return deckService.findDeckById(deckId)
+                .map(deck ->
+                    cardService.findCardByIdAndDeckId(cardId, deckId)
+                            .map(card ->
+                                    ResponseEntity.ok().body(cardService.updateCardData(card, cardDetails)))
+                            .orElse(ResponseEntity.notFound().build())
+                ).orElse(ResponseEntity.notFound().build());
+    }
+
     @PostMapping
     public ResponseEntity<Card> addCardToDeck(@PathVariable Long deckId, @RequestBody Card card) {
         return deckService.findDeckById(deckId)
@@ -38,5 +51,19 @@ public class CardController {
                     card.setDeck(deck);
                     return ResponseEntity.ok().body(cardService.saveCard(card));
                 }).orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{cardId}")
+    public ResponseEntity<?> deleteCard(@PathVariable Long deckId,
+                                           @PathVariable Long cardId){
+        return deckService.findDeckById(deckId)
+                .map(deck ->
+                        cardService.findCardByIdAndDeckId(cardId, deckId)
+                                .map(card ->{
+                                    cardService.deleteCard(cardId, deckId);
+                                    return ResponseEntity.ok().build();
+                                })
+                                .orElse(ResponseEntity.notFound().build())
+                ).orElse(ResponseEntity.notFound().build());
     }
 }

@@ -14,19 +14,28 @@ public class DeckServiceImpl implements DeckService{
     @Autowired
     DeckRepository deckRepository;
 
-    public Optional<Deck> findDeckById(Long id) {
-        return deckRepository.findById(id);
+    public Optional<Deck> findDeckById(Long deckId) {
+        return deckRepository.findById(deckId);
     }
 
     public List<Deck> findAllDecks() {
         return deckRepository.findAll();
     }
 
+    public Deck saveNewDeck(Deck deck) {
+        return deckRepository.save(deck);
+    }
+
+    public Deck updateDeckData(Deck deck, Deck deckDetails) {
+        deck.updateData(deckDetails.getName());
+        return deckRepository.save(deck);
+    }
+
     public void deleteDeck(Long deckId) {
         deckRepository.deleteById(deckId);
     }
 
-    public Deck saveNewDeck(Deck deck) {
-        return deckRepository.save(deck);
+    public boolean existsDeckById(Long deckId){
+        return deckRepository.existsById(deckId);
     }
 }

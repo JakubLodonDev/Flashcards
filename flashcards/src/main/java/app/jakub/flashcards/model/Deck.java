@@ -21,6 +21,10 @@ public class Deck {
     public Deck() {
     }
 
+    public void updateData(String name){
+        this.name = name;
+    }
+
     public Long getDeckId() {
         return deckId;
     }

@@ -1,12 +1,15 @@
 package app.jakub.flashcards.Service;
 
 import app.jakub.flashcards.model.Card;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
-@Service
 public interface CardService {
-    Card saveCard(Card card);
+
+    Optional<Card> findCardByIdAndDeckId(Long cardId, Long deckId);
     List<Card> findAllCardsByDeckId(Long deckId);
+    Card saveCard(Card card);
+    Card updateCardData(Card card, Card cardDetails);
+    void deleteCard(Long cardId, Long deckId);
 }
