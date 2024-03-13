@@ -1,15 +1,17 @@
 package app.jakub.flashcards.Service;
 
 import app.jakub.flashcards.model.Card;
+import app.jakub.flashcards.model.Deck;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface CardService {
 
-    Optional<Card> findCardByIdAndDeckId(Long cardId, Long deckId);
+    Deck findDeckById(Long id);
+    Card findCardByIdAndDeckId(Long cardId, Long deckId) throws Exception;
     List<Card> findAllCardsByDeckId(Long deckId);
-    Card saveCard(Card card);
-    Card updateCardData(Card card, Card cardDetails);
-    void deleteCard(Long cardId, Long deckId);
+    Card saveCard(Long deckId, Card card);
+    Card updateCardData(Long deckId, Long cardId, Card cardDetails) throws Exception;
+    void deleteCard(Long cardId, Long deckId) throws Exception;
 }

@@ -2,6 +2,7 @@ package app.jakub.flashcards.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Card {
@@ -9,7 +10,9 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cardId;
 
+    @NotBlank(message = "Name is mandatory")
     private String front;
+    @NotBlank(message = "Name is mandatory")
     private String back;
 
     @ManyToOne

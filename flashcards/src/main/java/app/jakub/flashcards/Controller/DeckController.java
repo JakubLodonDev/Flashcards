@@ -3,6 +3,7 @@ package app.jakub.flashcards.Controller;
 import app.jakub.flashcards.Service.DeckService;
 import app.jakub.flashcards.model.Deck;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,32 +27,31 @@ public class DeckController {
 
     @GetMapping("/{deckId}")
     public ResponseEntity<Deck> getDeckById(@PathVariable Long deckId){
-        return deckService.findDeckById(deckId)
-                .map(deck -> ResponseEntity.ok().body(deck))
-                .orElse(ResponseEntity.notFound().build());
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(deckService.findDeckById(deckId));
     }
 
     @PostMapping
-    public Deck createDeck(@RequestBody Deck deck){
-        return deckService.saveNewDeck(deck);
+    public ResponseEntity<Deck> createDeck(@RequestBody Deck deck) throws Exception {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(deckService.saveNewDeck(deck));
     }
 
     @PutMapping("/{deckId}")
     public ResponseEntity<Deck> updateDeck(@PathVariable Long deckId,
                                            @RequestBody Deck deckDetails){
-        return deckService.findDeckById(deckId)
-                .map(deck ->
-                        ResponseEntity.ok().body(deckService.updateDeckData(deck, deckDetails))
-                ).orElse(ResponseEntity.notFound().build());
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(deckService.updateDeckData(deckId, deckDetails));
     }
 
     @DeleteMapping("/{deckId}")
-    public ResponseEntity<?> deleteDeck(@PathVariable Long deckId) {
-        return deckService.findDeckById(deckId)
-                .map(deck -> {
-                    deckService.deleteDeck(deck.getDeckId());
-                    return ResponseEntity.ok().build();
-                })
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<HttpStatus> deleteDeck(@PathVariable Long deckId) {
+        deckService.deleteDeck(deckId);
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
+                .build();
     }
 }
