@@ -3,7 +3,6 @@ package app.jakub.flashcards.Controller;
 import app.jakub.flashcards.Service.CardService;
 import app.jakub.flashcards.Service.DeckService;
 import app.jakub.flashcards.model.Card;
-import app.jakub.flashcards.model.Deck;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

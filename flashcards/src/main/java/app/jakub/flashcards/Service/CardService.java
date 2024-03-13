@@ -2,7 +2,6 @@ package app.jakub.flashcards.Service;
 
 import app.jakub.flashcards.model.Card;
 import app.jakub.flashcards.model.Deck;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 

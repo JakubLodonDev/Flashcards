@@ -15,6 +15,4 @@ public interface DeckService {
     Deck updateDeckData(Long deckId, Deck deckDetails);
 
     void deleteDeck(Long deckId);
-
-    boolean existsDeckById(Long deckId);
 }
