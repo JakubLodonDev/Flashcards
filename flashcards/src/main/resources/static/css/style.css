@@ -1,0 +1,93 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #333;
+}
+
+.form {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box; /* So that width includes padding and border */
+}
+
+.btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none; /* For link-styled buttons */
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.cards-table,
+.decks-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.cards-table th,
+.decks-table th,
+.cards-table td,
+.decks-table td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.cards-table th,
+.decks-table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.cards-table tr:nth-child(odd),
+.decks-table tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.cards-table tr:hover,
+.decks-table tr:hover {
+  background-color: #ddd;
+}
